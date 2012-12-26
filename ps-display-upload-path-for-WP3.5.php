@@ -18,7 +18,7 @@ Author URI: http://www.prime-strategy.co.jp/about/staff/oh/
 
 class ps_display_upload_path_for_wp35{
 	/*
-	*　plugins loaded
+	* plugins loaded
 	*/
 	function ps_display_upload_path_for_wp35( ){
 		$this->__construct( );
@@ -131,7 +131,7 @@ class ps_display_upload_path_for_wp35{
 	        return $upload_url_path;
 		}
 
-		//upload_url_path　空じゃない場合、戻る
+		//upload_url_path 空じゃない場合、戻る
 		if ( ! $this->chk_string_empty( $upload_url_path ) ) {
 		    return $upload_url_path;
 		}
