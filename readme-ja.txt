@@ -4,7 +4,7 @@ Tags: wordpress3.5に対して、アップロードするファイルの保存�
 Requires at least: 3.5
 Tested up to: 3.5
 
-wordpress multilingualization.
+WordPress3.5のため、ップロードするファイルの保存場所とファイルへの完全な URL パスを表示させる。
 == Description ==
 * WordPress3.5のため、ップロードするファイルの保存場所とファイルへの完全な URL パスを表示させる。
 * メディアのデフォルト状態に戻したい場合、プラグインを無効にして、アップロードするファイルの保存場所とファイルへの完全な URL パスのデータを削除する.

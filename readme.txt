@@ -4,7 +4,7 @@ Tags: display upload_path upload_url_path
 Requires at least: 3.5
 Tested up to: 3.5
 
-wordpress multilingualization.
+display upload_path and upload_url_path for WordPress3.5
 == Description ==
 * display upload_path and upload_url_path for WordPress3.5
 * if want to back The default state of the media , deactivate the plugins and delete upload_path and upload_url_path.
