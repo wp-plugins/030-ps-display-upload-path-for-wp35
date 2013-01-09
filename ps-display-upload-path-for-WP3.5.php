@@ -62,7 +62,7 @@ class ps_display_upload_path_for_wp35{
 	 */
 	function initialize( ){
 		//echo number_format(memory_get_usage());
-
+		
 		if( !defined('DS') ):
 			define( 'DS', DIRECTORY_SEPARATOR );
 		endif;
