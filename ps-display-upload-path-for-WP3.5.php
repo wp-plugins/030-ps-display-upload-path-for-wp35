@@ -105,6 +105,7 @@ class ps_display_upload_path_for_wp35{
 	function admin_init( ){
 		//アップロードするファイルの保存場所の設定を表示する option_(option_key)
 		add_filter( 'option_upload_url_path'							, array( &$this , 'ps_upload_url_path' )  	);
+
 		//プラグイン無効するときにDEFAULT_UPLOADS_PATHを削除にする
 		register_deactivation_hook( __FILE__ 							, array( $this , 'ps_delete_default_uploads_path') );
 	}
@@ -120,6 +121,8 @@ class ps_display_upload_path_for_wp35{
 	*/
 	function ps_upload_url_path( $upload_url_path ){
 		global $wp_version;
+
+		//var_dump($upload_url_path);
 
 		//WordPressのバージョン確認
 		if ( ! version_compare( $wp_version, '3.5', '>=' ) ) {
@@ -140,6 +143,7 @@ class ps_display_upload_path_for_wp35{
 		if ( ! $this->chk_string_empty( $upload_path ) && $upload_path != DEFAULT_UPLOADS_PATH ){
 		    return $upload_url_path;
 		}else{
+			add_action( 'admin_print_styles-options-media.php'			    	, array( &$this, 'add_admin_print_styles' ) );
 		    return '/' . DEFAULT_UPLOADS_PATH ;
 		}
 	}
@@ -155,10 +159,28 @@ class ps_display_upload_path_for_wp35{
 	*/
 	function ps_delete_default_uploads_path( ){
 		$upload_url_path = get_option('upload_url_path');
+		$upload_path = get_option('upload_path');
 
-		if ( $upload_url_path == '/' . DEFAULT_UPLOADS_PATH ){
+		if ( $upload_url_path == '/' . DEFAULT_UPLOADS_PATH && (! $upload_path  || $upload_path == DEFAULT_UPLOADS_PATH ) ){
 			update_option('upload_url_path', '');
 		}
+	}
+
+	/*
+	* ファンクション名： add_admin_print_styles
+	* 機能概要： プラグインのcssを読み込み
+	* 作成：プライム・ストラテジー株式会社 王 濱
+	* 作成：
+	* 変更：
+	* @param resource
+	* @param int
+	* @param string
+	* @return
+	*/
+	function add_admin_print_styles( ){
+		wp_register_style( 'prefix-style-'. strtolower(__CLASS__) , plugins_url('css/prefix-style.css', __FILE__) );
+		wp_enqueue_style( 'prefix-style-' . strtolower(__CLASS__) );	
+		wp_enqueue_script( 'prefix-js-' . strtolower(__CLASS__) , plugins_url('js/prefix-js.js', __FILE__) );
 	}
 
 	/**
