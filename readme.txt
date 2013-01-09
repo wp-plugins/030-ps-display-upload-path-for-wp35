@@ -27,6 +27,7 @@ display upload_path and upload_url_path for WordPress3.5
 = Version 1.0 (2012-12-26) =
 * PUBLISH: [030 Ps Display Upload_path For WP3.5] release
 * MESSAGE: [030 Ps Display Upload_path For WP3.5] 3.5 Validated
+* Fix : [012 ps multi languages] 1.1 update DS 
 
 == Screenshots ==
 1. deactivate the plugin
