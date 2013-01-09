@@ -4,7 +4,7 @@ Plugin Name: 030 Ps Display Upload_path For WP3.5
 Plugin URI: http://wordpress.org/extend/plugins/030-ps-display-upload-path-for-WP3.5
 Description: Display Upload_path And Upload_url_path for WordPress3.5 
 Author: Wang Bin (oh@prime-strategy.co.jp)
-Version: 1.0
+Version: 1.1
 Author URI: http://www.prime-strategy.co.jp/about/staff/oh/
 */
 
@@ -140,7 +140,7 @@ class ps_display_upload_path_for_wp35{
 		if ( ! $this->chk_string_empty( $upload_path ) && $upload_path != DEFAULT_UPLOADS_PATH ){
 		    return $upload_url_path;
 		}else{
-		    return DS . DEFAULT_UPLOADS_PATH ;
+		    return '/' . DEFAULT_UPLOADS_PATH ;
 		}
 	}
 
@@ -154,10 +154,9 @@ class ps_display_upload_path_for_wp35{
 	* @return なし
 	*/
 	function ps_delete_default_uploads_path( ){
-
 		$upload_url_path = get_option('upload_url_path');
 
-		if ( $upload_url_path == DS . DEFAULT_UPLOADS_PATH ){
+		if ( $upload_url_path == '/' . DEFAULT_UPLOADS_PATH ){
 			update_option('upload_url_path', '');
 		}
 	}
