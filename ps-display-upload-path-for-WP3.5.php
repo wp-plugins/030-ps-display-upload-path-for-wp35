@@ -143,7 +143,9 @@ class ps_display_upload_path_for_wp35{
 		if ( ! $this->chk_string_empty( $upload_path ) && $upload_path != DEFAULT_UPLOADS_PATH ){
 		    return $upload_url_path;
 		}else{
-			add_action( 'admin_print_styles-options-media.php'			    	, array( &$this, 'add_admin_print_styles' ) );
+			if ( $this->chk_string_empty( $upload_url_path ) ){
+				add_action( 'admin_print_styles-options-media.php'			    	, array( &$this, 'add_admin_print_styles' ) );	
+			}
 		    return '/' . DEFAULT_UPLOADS_PATH ;
 		}
 	}
